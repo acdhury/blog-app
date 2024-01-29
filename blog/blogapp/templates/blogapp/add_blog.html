@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add a new blog</title>
+        <style>
+            body{
+                background-color: blanchedalmond;
+            }
+            p, h3{
+                margin: 0%;
+                display: inline-block;
+            }
+            button{
+                display: inline-block
+            }
+            .blogs-container{
+                display: inline-block;
+                width: 40%;
+                border: 10px;
+                border-color: black;
+                padding-left:  30px;
+            }
+            .all-container{
+                display: block;
+                box-shadow: 4cm;
+                padding-bottom: 10px;
+            }
+            .update-container{
+                display: inline-block;
+            }
+            .delete-container{
+                display: inline-block;
+            }
+        </style>
+    
+    </head>
+    <body>
+        <h1>
+            Please add a new blog
+        </h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button >Submit</button>
+        </form>
+
+        <a href="{% url 'index' %}">
+            <button>
+                Go back to Home
+            </button>
+        </a>
+    </body> 
+</html>
+
+

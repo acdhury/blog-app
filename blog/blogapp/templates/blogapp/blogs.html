@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blogs</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+        }
+        p, h3{
+            margin: 0%;
+            display: inline-block;
+        }
+        hr{
+            background-color: black;
+        }
+        button{
+            display: inline-block
+        }
+        
+        .all-container{
+            width: 100%;
+            box-shadow: 4cm;
+            padding-bottom: 10px;
+            border-color: black;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 15px;
+            padding-bottom: 20px;      
+            display: flex; 
+            
+        }
+        .blogs-container{
+            display: inline-block;
+            width: 40%;
+            height: auto;
+            border: 10px;
+            padding-left:  30px;
+            margin-left: 0px;
+            flex-grow: 12;
+
+        }
+        .update-container{
+            display: inline-block;
+            
+            padding-right: 0px;
+            flex-grow:1;
+        }
+        .delete-container{
+            display: inline-block;
+            
+            padding-right: 20px;
+            flex-grow:1;
+        }
+        .button-container{
+            padding-top: 30px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>All Blogs</h1>
+    <hr>
+        {% if blogs %}
+            {% for blog in blogs %}
+            <div class="all-container">
+                <div class="blogs-container">
+                    <p>{{ blog.blog }}</p>
+                </div>
+                <div class="update-container">
+                    <a href="{% url 'update-blog' blog.id %}">
+                        <button>Update</button>
+                    </a>
+                </div>
+                <div class="delete-container">
+                    
+                   <form action="{% url 'delete-blog' blog.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="blog_id" value="{{ blog.id }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+                
+            </div>
+            <hr>                
+            {% endfor %}
+        {% else %}
+            <div>
+                <h1>No blogs to show</h1>
+            </div>
+        {% endif %}
+    
+    <div class="button-container">
+        <a href="{% url 'add-blog' %}">
+            <button>Add Blog</button>
+        </a>
+    </div>
+        <br>
+    <div>
+        <a href="{% url 'index' %}">
+            <button>Home page</button>
+        </a>
+    </div>
+    
+    
+   
+</body>
+</html>

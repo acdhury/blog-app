@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Welcome to Blog Storage</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+        }
+        p, h3{
+            margin: 0%;
+            display: inline-block;
+        }
+        button{
+            display: inline-block
+        }
+        .blogs-container{
+            display: inline-block;
+            width: 40%;
+            border: 10px;
+            border-color: black;
+            padding-left:  30px;
+        }
+        .all-container{
+            display: block;
+            box-shadow: 4cm;
+            padding-bottom: 10px;
+            background-color: aliceblue;
+            border-color: black;
+        }
+        .update-container{
+            display: inline-block;
+        }
+        .delete-container{
+            display: inline-block;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <h1>This is a place for you to store your blogs</h1>
+
+    <div>
+        <a href="{% url 'blogs' %}">
+            <button class="go-blogs">View Blogs</button>
+        </a>
+    </div>
+    
+    <br>
+    <div>
+        <a href="{% url 'add-blog' %}">
+            <button>Add Blog</button>
+        </a>
+    </div>
+    
+</body>
+</html>
